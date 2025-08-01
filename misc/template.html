@@ -1,0 +1,860 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>TRASHWEB / INDEX.EXA</title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      background: 
+        radial-gradient(circle at 20% 80%, rgba(0, 255, 65, 0.02) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(255, 106, 106, 0.015) 0%, transparent 50%),
+        radial-gradient(circle at 40% 40%, rgba(120, 232, 221, 0.01) 0%, transparent 50%),
+        repeating-linear-gradient(
+          45deg,
+          transparent 0px,
+          transparent 2px,
+          rgba(51, 51, 51, 0.1) 2px,
+          rgba(51, 51, 51, 0.1) 4px
+        ),
+        #0a0a0a;
+      color: #c5c5c5;
+      font-family: 'Courier New', monospace;
+      font-size: 13px;
+      height: 100vh;
+      overflow: hidden;
+      position: relative;
+    }
+
+    /* Animated circuit border */
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: 
+        linear-gradient(90deg, #00ff41 0%, transparent 1%),
+        linear-gradient(180deg, #00ff41 0%, transparent 1%),
+        linear-gradient(-90deg, #ff6a6a 0%, transparent 1%),
+        linear-gradient(0deg, #ff6a6a 0%, transparent 1%);
+      background-size: 20px 2px, 2px 20px, 20px 2px, 2px 20px;
+      background-position: 0 0, 0 0, 100% 100%, 100% 100%;
+      animation: circuit-flow 8s linear infinite;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    @keyframes circuit-flow {
+      0% {
+        background-position: 0 0, 0 0, 100% 100%, 100% 100%;
+      }
+      25% {
+        background-position: 20px 0, 0 20px, 80% 100%, 100% 80%;
+      }
+      50% {
+        background-position: 40px 0, 0 40px, 60% 100%, 100% 60%;
+      }
+      75% {
+        background-position: 60px 0, 0 60px, 40% 100%, 100% 40%;
+      }
+      100% {
+        background-position: 80px 0, 0 80px, 20% 100%, 100% 20%;
+      }
+    }
+
+    /* Enhanced grid pattern overlay for edges */
+    body::after {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: 
+        linear-gradient(rgba(65, 65, 65, 0.18) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(65, 65, 65, 0.18) 1px, transparent 1px);
+      background-size: 20px 20px;
+      mask: 
+        linear-gradient(to right, black 0%, transparent 20%, transparent 80%, black 100%),
+        linear-gradient(to bottom, black 0%, transparent 20%, transparent 80%, black 100%);
+      mask-composite: intersect;
+      -webkit-mask: 
+        linear-gradient(to right, black 0%, transparent 20%, transparent 80%, black 100%),
+        linear-gradient(to bottom, black 0%, transparent 20%, transparent 80%, black 100%);
+      -webkit-mask-composite: source-in;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* Data stream in margins */
+    .data-stream {
+      position: fixed;
+      font-size: 10px;
+      color: #333;
+      font-family: 'Courier New', monospace;
+      z-index: 3;
+      pointer-events: none;
+      white-space: nowrap;
+      overflow: hidden;
+    }
+
+    .data-stream.left {
+      left: 8px;
+      top: 80px;
+      bottom: 80px;
+      width: 80px;
+      writing-mode: vertical-lr;
+      animation: data-flow-up 20s linear infinite;
+    }
+
+    .data-stream.right {
+      right: 8px;
+      top: 80px;
+      bottom: 80px;
+      width: 80px;
+      writing-mode: vertical-rl;
+      animation: data-flow-down 25s linear infinite;
+    }
+
+    .data-stream.top {
+      top: 8px;
+      left: 80px;
+      right: 80px;
+      height: 60px;
+      animation: data-flow-right 30s linear infinite;
+    }
+
+    .data-stream.bottom {
+      bottom: 8px;
+      left: 80px;
+      right: 80px;
+      height: 60px;
+      animation: data-flow-left 35s linear infinite;
+    }
+
+    @keyframes data-flow-up {
+      0% { transform: translateY(100%); }
+      100% { transform: translateY(-100%); }
+    }
+
+    @keyframes data-flow-down {
+      0% { transform: translateY(-100%); }
+      100% { transform: translateY(100%); }
+    }
+
+    @keyframes data-flow-right {
+      0% { transform: translateX(-100%); }
+      100% { transform: translateX(100%); }
+    }
+
+    @keyframes data-flow-left {
+      0% { transform: translateX(100%); }
+      100% { transform: translateX(-100%); }
+    }
+
+    a {
+      color: #78e8dd;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    .layout {
+      display: flex;
+      height: 100%;
+      max-width: 1080px;
+      margin: 0 auto;
+      box-shadow: 0 0 12px #000;
+      position: relative;
+      z-index: 4;
+    }
+
+    .sidebar {
+      width: 240px;
+      background: 
+        radial-gradient(circle at 15% 25%, rgba(0, 255, 65, 0.025) 0%, transparent 50%),
+        radial-gradient(circle at 85% 75%, rgba(120, 232, 221, 0.02) 0%, transparent 50%),
+        linear-gradient(
+          180deg,
+          rgba(255, 255, 255, 0.02) 0%,
+          transparent 25%,
+          transparent 75%,
+          rgba(0, 0, 0, 0.25) 100%
+        ),
+        #222;
+      border-right: 1px solid #333;
+      display: flex;
+      flex-direction: column;
+      padding: 16px;
+      box-sizing: border-box;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Hexagonal pattern - existing */
+    .sidebar::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-image: 
+        radial-gradient(circle at 50% 50%, rgba(85, 85, 85, 0.15) 1px, transparent 1px);
+      background-size: 24px 21px;
+      background-position: 0 0, 12px 10.5px;
+      background-repeat: repeat;
+      transform: skewY(30deg) scale(1, 0.866);
+      transform-origin: center;
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0.6;
+    }
+
+    /* NEW: CRT Scanlines overlay */
+    .sidebar::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: repeating-linear-gradient(
+        0deg,
+        transparent 0px,
+        transparent 1px,
+        rgba(0, 0, 0, 0.3) 1px,
+        rgba(0, 0, 0, 0.3) 2px
+      );
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .sidebar > * {
+      position: relative;
+      z-index: 2;
+    }
+
+    .sidebar-section {
+      margin-bottom: 24px;
+    }
+
+    .sidebar-section h2 {
+      color: #888;
+      font-size: 11px;
+      margin: 0 0 8px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      border-bottom: 1px dashed #444;
+      padding-bottom: 4px;
+    }
+
+    .sidebar ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .sidebar li {
+      margin-bottom: 4px;
+      color: #ccc;
+    }
+
+    .indicator {
+      display: inline-block;
+      width: 8px;
+      height: 8px;
+      background: #66ff66;
+      margin-right: 6px;
+      vertical-align: middle;
+    }
+
+    .protocol-tag {
+      display: inline-block;
+      font-size: 10px;
+      color: #ff6a6a;
+      background: rgba(255, 106, 106, 0.1);
+      padding: 1px 4px;
+      margin-right: 6px;
+      border: 1px solid rgba(255, 106, 106, 0.3);
+      font-weight: bold;
+    }
+
+    .main {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .blog-header {
+      padding: 12px 16px;
+      font-size: 11px;
+      color: #888;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      display: flex;
+      justify-content: space-between;
+      border-bottom: 1px solid #333;
+      background: #181818;
+    }
+
+    .blog-body {
+      flex: 1;
+      background: #111;
+      padding: 16px;
+      overflow-y: auto;
+      box-shadow: inset 0 0 6px #000;
+      position: relative;
+    }
+
+    /* CRT Scanlines for main content area */
+    .blog-body::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: repeating-linear-gradient(
+        0deg,
+        transparent 0px,
+        transparent 1px,
+        rgba(0, 0, 0, 0.3) 1px,
+        rgba(0, 0, 0, 0.3) 2px
+      );
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .blog-body > * {
+      position: relative;
+      z-index: 2;
+    }
+
+    .post {
+      margin-bottom: 24px;
+      cursor: pointer;
+      transition: background-color 0.2s ease;
+      padding: 4px;
+      margin-left: -4px;
+      border-radius: 2px;
+    }
+
+    .post:hover {
+      background-color: #1a1a1a;
+      box-shadow: 0 0 4px #333;
+    }
+
+    .code-line {
+      white-space: pre;
+      line-height: 1.5;
+    }
+
+    .line-number {
+      display: inline-block;
+      width: 28px;
+      color: #444;
+      margin-right: 6px;
+    }
+
+    .opcode {
+      color: #ff6a6a;
+    }
+
+    .arg {
+      color: #78e8dd;
+    }
+
+    .value {
+      color: #cfcfcf;
+    }
+
+    .comment {
+      color: #888;
+    }
+
+    .cursor {
+      animation: blink 1s step-start infinite;
+      color: #fff;
+    }
+
+    @keyframes blink {
+      50% { opacity: 0; }
+    }
+
+    .status-bar {
+      padding: 8px 16px;
+      background: #101010;
+      color: #666;
+      font-size: 11px;
+      border-top: 1px solid #333;
+    }
+  
+    .terminal-bar {
+      padding: 12px 16px;
+      background: 
+        radial-gradient(ellipse at center, #0f0f0f 0%, #0a0a0a 100%);
+      color: #9dfba8;
+      font-family: 'Courier New', monospace;
+      font-size: 13px;
+      border-top: 1px solid #333;
+      border-bottom: 1px solid #222;
+      max-height: 120px;
+      height: 42px; /* Single line height with consistent padding */
+      overflow: hidden;
+      position: relative;
+      border-radius: 0 0 2px 2px;
+      transition: height 0.3s ease-out;
+      box-sizing: border-box;
+    }
+    
+    .terminal-bar.expanded {
+      height: 120px;
+    }
+
+    /* Terminal content wrapper */
+    .terminal-content {
+      position: relative;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      overflow-y: auto;
+      overflow-x: hidden;
+    }
+
+    /* CRT scanlines overlay - applied to the entire terminal */
+    .crt-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: repeating-linear-gradient(
+        0deg,
+        transparent 0px,
+        transparent 1px,
+        rgba(0, 255, 65, 0.05) 1px,
+        rgba(0, 255, 65, 0.05) 2px
+      );
+      pointer-events: none;
+      animation: crt-flicker 0.15s linear infinite;
+      z-index: 10;
+    }
+
+    @keyframes crt-flicker {
+      0% { opacity: 1; }
+      98% { opacity: 1; }
+      99% { opacity: 0.98; }
+      100% { opacity: 1; }
+    }
+
+    .terminal-line {
+      line-height: 1.4;
+      margin: 2px 0;
+      position: relative;
+    }
+
+    .terminal-input {
+      background: transparent;
+      border: none;
+      color: #9dfba8;
+      font-family: 'Courier New', monospace;
+      font-size: 13px;
+      outline: none;
+      flex: 1;
+      caret-color: transparent;
+    }
+
+    .terminal-prompt {
+      display: flex;
+      align-items: center;
+      position: relative;
+      margin-top: 4px;
+    }
+
+    @keyframes cursor-blink {
+      0%, 45% { 
+        opacity: 1;
+      }
+      50%, 95% { 
+        opacity: 0.2;
+      }
+      100% { 
+        opacity: 1;
+      }
+    }
+
+    .terminal-output {
+      color: #78e8dd;
+      margin-left: 0;
+    }
+
+    .terminal-input-wrapper {
+      position: relative;
+      flex: 1;
+    }
+
+    .terminal-cursor {
+      position: absolute;
+      top: 0;
+      background: #9dfba8;
+      width: 1px;
+      height: 15px;
+      animation: cursor-blink 1.2s ease-in-out infinite;
+      pointer-events: none;
+    }
+    
+    #terminal-history {
+      overflow: visible;
+      flex-shrink: 0;
+    }
+  </style>
+</head>
+<body>
+  <!-- Data streams in margins -->
+  <div class="data-stream left">01001001 NODE_SYNC 0xA7F3 STATUS_OK 11010110 EXEC_TRACE 0x4B9E MEMORY_SCAN 10101001 PORT_LISTEN 0x7D2C THREAD_RUN 01110011</div>
+  <div class="data-stream right">PROC_ID_847 10110001 STACK_TRACE 0x9F8A NET_PACKET 01001110 FILE_HANDLE 0x3C7E SYS_CALL 11000101 BUFFER_FULL 0x8D4B</div>
+  <div class="data-stream top">:: NETWORK_SCAN :: 192.168.1.0/24 :: PORTS [22,80,443,8080] :: STATUS: ACTIVE :: THREADS: 12 :: CPU: 23% :: MEM: 847MB ::</div>
+  <div class="data-stream bottom">:: EXA_RUNTIME :: CYCLES: 4,294,967,295 :: HEAP: 64KB :: REGISTERS: [X=0x47A9, T=0xB3C7, F=0x0000] :: OPCODES: 847 ::</div>
+
+  <div class="layout">
+    <div class="sidebar">
+      <div class="sidebar-section">
+        <h2>NODE STATUS</h2>
+        <ul>
+          <li><span class="indicator"></span> NODE_01 ONLINE</li>
+          <li><span class="indicator"></span> NODE_07 LISTENING</li>
+          <li><span class="indicator" style="background:#ff9966;"></span> NODE_12 ERROR</li>
+        </ul>
+      </div>
+      <div class="sidebar-section">
+        <h2>DIRECTORIES</h2>
+        <ul>
+          <li><a href="/">/index.exa</a></li>
+          <li><a href="/blog">/blog</a></li>
+          <li><a href="/projects">/projects</a></li>
+          <li><a href="/about">/about</a></li>
+        </ul>
+      </div>
+      <div class="sidebar-section">
+        <h2>MEMORY</h2>
+        <ul>
+          <li>USED: 48mb</li>
+          <li>ACTIVE EXAs: 8</li>
+          <li>UPTIME: 12d 3h</li>
+        </ul>
+      </div>
+      <div class="sidebar-section">
+        <h2>NETWORK LINKS</h2>
+        <ul>
+          <li><a href="https://github.com/rxvt"><span class="protocol-tag">[GITHUB]</span></a></li>
+          <li><a href="https://www.linkedin.com/in/shaneanderson3/"><span class="protocol-tag">[LINKEDIN]</span></a></li>
+          <li><a href="https://shaneanderson.id.au/feeds/all.atom.xml"><span class="protocol-tag">[RSS]</span></a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="main">
+      <div class="blog-header">
+        <div>FILE: /home/trashweb/index.exa</div>
+        <div>[READ ONLY]</div>
+      </div>
+      <div class="blog-body">
+        <div class="post">
+          <div class="code-line"><span class="line-number">01</span><span class="opcode">GRAB</span> <span class="arg">/posts/hacking-the-grid</span></div>
+          <div class="code-line"><span class="line-number">02</span><span class="opcode">MARK</span> <span class="arg">2025-07-01</span></div>
+          <div class="code-line"><span class="line-number">03</span><span class="opcode">COPY</span> <span class="arg">title</span> <span class="value">"Hacking the Corporate Grid"</span></div>
+          <div class="code-line"><span class="line-number">04</span><span class="opcode">COPY</span> <span class="arg">excerpt</span> <span class="value">"An EXA-level breakdown of intrusion techniques in old netzones."</span></div>
+          <div class="code-line"><span class="line-number">05</span><span class="opcode">EXEC</span> <a href="/posts/hacking-the-grid" class="arg">READ</a></div>
+        </div>
+        <div class="post">
+          <div class="code-line"><span class="line-number">06</span><span class="opcode">GRAB</span> <span class="arg">/posts/node-7-protocol</span></div>
+          <div class="code-line"><span class="line-number">07</span><span class="opcode">MARK</span> <span class="arg">2025-06-22</span></div>
+          <div class="code-line"><span class="line-number">08</span><span class="opcode">COPY</span> <span class="arg">title</span> <span class="value">"Exploring NODE_07 Protocol Faults"</span></div>
+          <div class="code-line"><span class="line-number">09</span><span class="opcode">COPY</span> <span class="arg">excerpt</span> <span class="value">"Sometimes the old ops run smoother than the sanctioned ones."</span></div>
+          <div class="code-line"><span class="line-number">10</span><span class="opcode">EXEC</span> <a href="/posts/node-7-protocol" class="arg">READ</a></div>
+        </div>
+        <div class="post">
+          <div class="code-line"><span class="line-number">11</span><span class="opcode">GRAB</span> <span class="arg">/posts/file-dump-logs</span></div>
+          <div class="code-line"><span class="line-number">12</span><span class="opcode">MARK</span> <span class="arg">2025-06-10</span></div>
+          <div class="code-line"><span class="line-number">13</span><span class="opcode">COPY</span> <span class="arg">title</span> <span class="value">"File Dumps and Ghost Logs"</span></div>
+          <div class="code-line"><span class="line-number">14</span><span class="opcode">COPY</span> <span class="arg">excerpt</span> <span class="value">"What we lose in the stack gets found in the phage."</span></div>
+          <div class="code-line"><span class="line-number">15</span><span class="opcode">EXEC</span> <a href="/posts/file-dump-logs" class="arg">READ</a></div>
+        </div>
+      </div>
+      
+      <div class="terminal-bar" id="terminal">
+        <div class="terminal-content">
+          <div id="terminal-history"></div>
+          <div class="terminal-prompt">
+            <span>&gt;&nbsp;</span>
+            <div class="terminal-input-wrapper">
+              <input type="text" class="terminal-input" id="terminal-input" autocomplete="off" spellcheck="false">
+              <div class="terminal-cursor" id="terminal-cursor"></div>
+            </div>
+          </div>
+        </div>
+        <div class="crt-overlay"></div>
+      </div>
+      
+      <div class="status-bar">
+        NODE_01 READY ·  TRASHWEB/OS v0.7  ·  Last sync: 12:41
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const terminalInput = document.getElementById('terminal-input');
+    const terminalHistory = document.getElementById('terminal-history');
+    const terminalCursor = document.getElementById('terminal-cursor');
+    
+    // Store command history
+    let commandHistory = [];
+    const MAX_HISTORY_ITEMS = 3;
+    let hasExecutedCommand = false;
+    
+    // Function to update cursor position
+    function updateCursorPosition() {
+      const inputValue = terminalInput.value;
+      const inputRect = terminalInput.getBoundingClientRect();
+      const tempSpan = document.createElement('span');
+      tempSpan.style.font = window.getComputedStyle(terminalInput).font;
+      tempSpan.style.visibility = 'hidden';
+      tempSpan.style.position = 'absolute';
+      tempSpan.style.whiteSpace = 'pre';
+      tempSpan.textContent = inputValue.substring(0, terminalInput.selectionStart);
+      document.body.appendChild(tempSpan);
+      
+      const textWidth = tempSpan.getBoundingClientRect().width;
+      document.body.removeChild(tempSpan);
+      
+      terminalCursor.style.left = textWidth + 'px';
+    }
+    
+    // Update cursor position on input and cursor movement
+    terminalInput.addEventListener('input', updateCursorPosition);
+    terminalInput.addEventListener('keyup', updateCursorPosition);
+    terminalInput.addEventListener('click', updateCursorPosition);
+    
+    // File system structure
+    const filesystem = {
+      '/': {
+        'latest': {
+          'hacking-the-grid': { type: 'file', date: '2025-07-01', title: 'Hacking the Corporate Grid' },
+          'node-7-protocol': { type: 'file', date: '2025-06-22', title: 'Exploring NODE_07 Protocol Faults' },
+          'file-dump-logs': { type: 'file', date: '2025-06-10', title: 'File Dumps and Ghost Logs' }
+        },
+        '2025': {
+          'hacking-the-grid': { type: 'file', date: '2025-07-01', title: 'Hacking the Corporate Grid' },
+          'node-7-protocol': { type: 'file', date: '2025-06-22', title: 'Exploring NODE_07 Protocol Faults' },
+          'file-dump-logs': { type: 'file', date: '2025-06-10', title: 'File Dumps and Ghost Logs' }
+        }
+      }
+    };
+    
+    let currentPath = '/';
+    
+    function addToHistory(command, output) {
+      // Expand terminal on first command
+      if (!hasExecutedCommand) {
+        hasExecutedCommand = true;
+        const terminal = document.getElementById('terminal');
+        terminal.classList.add('expanded');
+      }
+      
+      // Add new command to history
+      commandHistory.push({
+        command: command,
+        output: output
+      });
+      
+      // Keep only the last MAX_HISTORY_ITEMS
+      if (commandHistory.length > MAX_HISTORY_ITEMS) {
+        commandHistory = commandHistory.slice(-MAX_HISTORY_ITEMS);
+      }
+      
+      // Rebuild terminal history display
+      terminalHistory.innerHTML = '';
+      commandHistory.forEach(item => {
+        const commandLine = document.createElement('div');
+        commandLine.className = 'terminal-line';
+        commandLine.innerHTML = `&gt; ${item.command}`;
+        terminalHistory.appendChild(commandLine);
+        
+        if (item.output) {
+          const outputLine = document.createElement('div');
+          outputLine.className = 'terminal-line terminal-output';
+          outputLine.innerHTML = item.output;
+          terminalHistory.appendChild(outputLine);
+        }
+      });
+    }
+    
+    function executeCommand(command) {
+      const args = command.trim().split(' ');
+      const cmd = args[0].toLowerCase();
+      
+      switch (cmd) {
+        case 'ls':
+          const currentDir = getCurrentDirectory();
+          if (currentDir) {
+            const entries = Object.keys(currentDir).map(name => {
+              const item = currentDir[name];
+              if (typeof item === 'object' && !item.type) {
+                return `<span style="color: #78e8dd;">${name}/</span>`;
+              } else if (item.type === 'file') {
+                return `<span style="color: #cfcfcf;">${name}</span>`;
+              }
+              return name;
+            });
+            addToHistory(command, entries.join('&nbsp;&nbsp;'));
+          } else {
+            addToHistory(command, 'ERROR: Directory not found');
+          }
+          break;
+          
+        case 'cd':
+          if (args[1]) {
+            const newPath = args[1];
+            if (newPath === '..') {
+              if (currentPath !== '/') {
+                currentPath = '/';
+              }
+            } else if (newPath === '/') {
+              currentPath = '/';
+            } else {
+              const currentDir = getCurrentDirectory();
+              if (currentDir && currentDir[newPath] && typeof currentDir[newPath] === 'object' && !currentDir[newPath].type) {
+                currentPath = currentPath === '/' ? `/${newPath}` : `${currentPath}/${newPath}`;
+              } else {
+                addToHistory(command, 'ERROR: Directory not found');
+                return;
+              }
+            }
+            addToHistory(command, `Changed to ${currentPath}`);
+          } else {
+            addToHistory(command, 'Usage: cd <directory>');
+          }
+          break;
+          
+        case 'pwd':
+          addToHistory(command, currentPath);
+          break;
+          
+        case 'help':
+          addToHistory(command, 'Available commands: ls, cd, pwd, cat, read, help, clear');
+          break;
+          
+        case 'read':
+          if (args[1]) {
+            const articleSlug = args[1];
+            const allArticles = {
+              'hacking-the-grid': { url: '/posts/hacking-the-grid', title: 'Hacking the Corporate Grid' },
+              'node-7-protocol': { url: '/posts/node-7-protocol', title: 'Exploring NODE_07 Protocol Faults' },
+              'file-dump-logs': { url: '/posts/file-dump-logs', title: 'File Dumps and Ghost Logs' }
+            };
+            
+            if (allArticles[articleSlug]) {
+              addToHistory(command, `Opening article: ${allArticles[articleSlug].title}...`);
+              // In a real implementation, this would navigate to the article
+              setTimeout(() => {
+                window.location.href = allArticles[articleSlug].url;
+              }, 500);
+            } else {
+              addToHistory(command, 'ERROR: Article not found. Available articles: hacking-the-grid, node-7-protocol, file-dump-logs');
+            }
+          } else {
+            addToHistory(command, 'Usage: read <article-name>');
+          }
+          break;
+          
+        case 'cat':
+          if (args[1]) {
+            const currentDir = getCurrentDirectory();
+            if (currentDir && currentDir[args[1]] && currentDir[args[1]].type === 'file') {
+              const file = currentDir[args[1]];
+              addToHistory(command, `<span style="color: #ff6a6a;">TITLE:</span> ${file.title}<br><span style="color: #ff6a6a;">DATE:</span> ${file.date}<br><span style="color: #888;">// File contents encrypted</span>`);
+            } else {
+              addToHistory(command, 'ERROR: File not found');
+            }
+          } else {
+            addToHistory(command, 'Usage: cat <filename>');
+          }
+          break;
+          
+        case 'clear':
+          commandHistory = [];
+          terminalHistory.innerHTML = '';
+          // Optionally collapse terminal back to single line on clear
+          const terminal = document.getElementById('terminal');
+          terminal.classList.remove('expanded');
+          hasExecutedCommand = false;
+          return;
+          
+        default:
+          if (command.trim()) {
+            addToHistory(command, `ERROR: Command '${cmd}' not found. Type 'help' for available commands.`);
+          }
+      }
+    }
+    
+    function getCurrentDirectory() {
+      const pathParts = currentPath === '/' ? [] : currentPath.split('/').filter(p => p);
+      let current = filesystem['/'];
+      
+      for (const part of pathParts) {
+        if (current[part]) {
+          current = current[part];
+        } else {
+          return null;
+        }
+      }
+      
+      return current;
+    }
+    
+    // Add click handlers for posts
+    document.addEventListener('DOMContentLoaded', function() {
+      const posts = document.querySelectorAll('.post');
+      posts.forEach(post => {
+        post.addEventListener('click', function() {
+          // Extract the article slug from the GRAB line
+          const grabLine = post.querySelector('.code-line .arg');
+          if (grabLine) {
+            const fullPath = grabLine.textContent;
+            const articleSlug = fullPath.split('/').pop();
+            
+            // Navigate to the article
+            window.location.href = fullPath;
+          }
+        });
+      });
+      
+      // Initialize cursor position
+      updateCursorPosition();
+    });
+    
+    terminalInput.addEventListener('keydown', function(e) {
+      if (e.key === 'Enter') {
+        const command = this.value;
+        executeCommand(command);
+        this.value = '';
+        updateCursorPosition();
+      }
+    });
+    
+    // Focus the input on load
+    terminalInput.focus();
+    
+    // Refocus input when clicking in terminal area
+    document.getElementById('terminal').addEventListener('click', function() {
+      terminalInput.focus();
+    });
+  </script>
+</body>
+</html>
