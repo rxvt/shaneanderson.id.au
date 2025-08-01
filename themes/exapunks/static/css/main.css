@@ -235,6 +235,8 @@ a:hover {
 .code-line {
   white-space: pre;
   line-height: 1.5;
+  position: relative;
+  z-index: 3;
 }
 
 .line-number {
@@ -256,7 +258,7 @@ a:hover {
   color: #cfcfcf;
 }
 
-.comment {
+.code-comment {
   color: #888;
 }
 

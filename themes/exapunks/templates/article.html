@@ -19,7 +19,7 @@
   <div class="code-line"><span class="line-number">06</span><span class="opcode">COPY</span> <span class="arg">tags</span> <span class="value">"{% for tag in article.tags %}{{ tag }}{% if not loop.last %}, {% endif %}{% endfor %}"</span></div>
   {% endif %}
   <div class="code-line"><span class="line-number">07</span><span class="opcode">EXEC</span> <span class="arg">DECRYPT_CONTENT</span></div>
-  <div class="code-line"><span class="line-number">08</span><span class="comment">// CONTENT_START</span></div>
+  <div class="code-line"><span class="line-number">08</span><span class="code-comment">// CONTENT_START</span></div>
 </div>
 
 <div class="article-content">
@@ -27,7 +27,7 @@
 </div>
 
 <div class="post">
-  <div class="code-line"><span class="line-number">99</span><span class="comment">// CONTENT_END</span></div>
+  <div class="code-line"><span class="line-number">99</span><span class="code-comment">// CONTENT_END</span></div>
   <div class="code-line"><span class="line-number">100</span><span class="opcode">EXEC</span> <span class="arg">FINALIZE</span></div>
 </div>
 
