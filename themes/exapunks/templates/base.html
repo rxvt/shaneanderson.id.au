@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="{% block html_lang %}{{ DEFAULT_LANG }}{% endblock %}">
+<head>
+  <meta charset="UTF-8" />
+  <title>{% block title %}{{ SITENAME }}{% if page_name %} - {{ page_name }}{% endif %}{% endblock %}</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  {% if FEED_ALL_ATOM %}
+  <link href="{{ FEED_DOMAIN }}/{{ FEED_ALL_ATOM }}" type="application/atom+xml" rel="alternate" title="{{ SITENAME }} Atom Feed" />
+  {% endif %}
+  {% if FEED_ALL_RSS %}
+  <link href="{{ FEED_DOMAIN }}/{{ FEED_ALL_RSS }}" type="application/rss+xml" rel="alternate" title="{{ SITENAME }} RSS Feed" />
+  {% endif %}
+  
+  <link rel="stylesheet" type="text/css" href="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/css/main.css" />
+  <link rel="stylesheet" type="text/css" href="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/css/animations.css" />
+  <link rel="stylesheet" type="text/css" href="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/css/terminal.css" />
+  <link rel="stylesheet" type="text/css" href="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/css/pygments.css" />
+  
+  {% block extra_head %}{% endblock %}
+</head>
+<body>
+  <!-- Data streams in margins -->
+  <div class="data-stream left">01001001 NODE_SYNC 0xA7F3 STATUS_OK 11010110 EXEC_TRACE 0x4B9E MEMORY_SCAN 10101001 PORT_LISTEN 0x7D2C THREAD_RUN 01110011</div>
+  <div class="data-stream right">PROC_ID_847 10110001 STACK_TRACE 0x9F8A NET_PACKET 01001110 FILE_HANDLE 0x3C7E SYS_CALL 11000101 BUFFER_FULL 0x8D4B</div>
+  <div class="data-stream top">:: NETWORK_SCAN :: 192.168.1.0/24 :: PORTS [22,80,443,8080] :: STATUS: ACTIVE :: THREADS: 12 :: CPU: 23% :: MEM: 847MB ::</div>
+  <div class="data-stream bottom">:: EXA_RUNTIME :: CYCLES: 4,294,967,295 :: HEAP: 64KB :: REGISTERS: [X=0x47A9, T=0xB3C7, F=0x0000] :: OPCODES: 847 ::</div>
+
+  <div class="layout">
+    <div class="sidebar">
+      <div class="sidebar-section">
+        <h2>NODE STATUS</h2>
+        <ul>
+          <li><span class="indicator"></span> NODE_01 ONLINE</li>
+          <li><span class="indicator"></span> NODE_07 LISTENING</li>
+          <li><span class="indicator" style="background:#ff9966;"></span> NODE_12 ERROR</li>
+        </ul>
+      </div>
+      <div class="sidebar-section">
+        <h2>DIRECTORIES</h2>
+        <ul>
+          <li><a href="{{ SITEURL }}/">/index.exa</a></li>
+          {% if DISPLAY_PAGES_ON_MENU -%}
+            {% for pg in pages %}
+              <li><a href="{{ SITEURL }}/{{ pg.url }}">/{{ pg.slug }}</a></li>
+            {% endfor %}
+          {% endif %}
+          {% if DISPLAY_CATEGORIES_ON_MENU -%}
+            {% for cat, null in categories %}
+              <li><a href="{{ SITEURL }}/{{ cat.url }}">/category/{{ cat }}</a></li>
+            {% endfor %}
+          {% endif %}
+        </ul>
+      </div>
+      <div class="sidebar-section">
+        <h2>MEMORY</h2>
+        <ul>
+          <li>USED: {% if articles %}{{ articles|length }}{% else %}0{% endif %}</li>
+          <li>ACTIVE EXAs: {{ categories|length }}</li>
+        </ul>
+      </div>
+      <div class="sidebar-section">
+        <h2>NETWORK LINKS</h2>
+        <ul>
+          {% if SOCIAL %}
+            {% for name, link in SOCIAL %}
+              <li><a href="{{ link }}"><span class="protocol-tag">[{{ name.upper() }}]</span></a></li>
+            {% endfor %}
+          {% endif %}
+          {% if FEED_ALL_RSS %}
+            <li><a href="{{ FEED_DOMAIN }}/{{ FEED_ALL_RSS }}"><span class="protocol-tag">[RSS]</span></a></li>
+          {% endif %}
+        </ul>
+      </div>
+    </div>
+    <div class="main">
+      <div class="blog-header">
+        <div>FILE: {% block file_path %}/home/shane/{% block file_name %}index.exa{% endblock %}{% endblock %}</div>
+        <div>[READ ONLY]</div>
+      </div>
+      <div class="blog-body">
+        {% block content %}{% endblock %}
+      </div>
+      
+      <div class="terminal-bar" id="terminal">
+        <div class="terminal-content">
+          <div id="terminal-history"></div>
+          <div class="terminal-prompt">
+            <span>&gt;&nbsp;</span>
+            <div class="terminal-input-wrapper">
+              <input type="text" class="terminal-input" id="terminal-input" autocomplete="off" spellcheck="false">
+              <div class="terminal-cursor" id="terminal-cursor"></div>
+            </div>
+          </div>
+        </div>
+        <div class="crt-overlay"></div>
+      </div>
+      
+      <div class="status-bar">
+        NODE_01 READY ·  EXAPUNKS/OS v0.7  ·  Last sync: {{ articles[0].date.strftime('%H:%M') if articles else '12:41' }}
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Make articles available to terminal.js
+    {% if articles %}
+    window.articles = [
+      {% for article in articles %}
+      {
+        slug: '{{ article.slug }}',
+        title: '{{ article.title|e }}',
+        date: '{{ article.date.strftime('%Y-%m-%d') }}',
+        url: '{{ SITEURL }}/{{ article.url }}'
+      }{% if not loop.last %},{% endif %}
+      {% endfor %}
+    ];
+    {% else %}
+    window.articles = [];
+    {% endif %}
+  </script>
+  <script src="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/js/terminal.js"></script>
+  
+  {% block extra_scripts %}{% endblock %}
+</body>
+</html>

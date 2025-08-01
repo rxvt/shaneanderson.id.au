@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block title %}Categories - {{ SITENAME }}{% endblock %}
+
+{% block file_name %}categories.exa{% endblock %}
+
+{% block content %}
+<div class="post">
+  <div class="code-line"><span class="line-number">01</span><span class="opcode">SCAN</span> <span class="arg">CATEGORY_INDEX</span></div>
+  <div class="code-line"><span class="line-number">02</span><span class="opcode">LOAD</span> <span class="arg">ALL_CATEGORIES</span></div>
+  <div class="code-line"><span class="line-number">03</span><span class="comment">// FOUND {{ categories|length }} CATEGORIES</span></div>
+</div>
+
+{% for category, articles in categories %}
+<div class="post">
+  <div class="code-line"><span class="line-number">{{ "{:02d}".format(loop.index + 3) }}</span><span class="opcode">CAT</span> <a href="{{ SITEURL }}/{{ category.url }}" class="arg">{{ category }}</a> <span class="value">[{{ articles|length }} entries]</span></div>
+  {% for article in articles[:3] %}
+  <div class="code-line"><span class="line-number">{{ "{:02d}".format(loop.index + 10) }}</span><span class="opcode">ITEM</span> <a href="{{ SITEURL }}/{{ article.url }}" class="value">"{{ article.title }}"</a></div>
+  {% endfor %}
+  {% if articles|length > 3 %}
+  <div class="code-line"><span class="line-number">99</span><span class="comment">// ... and {{ articles|length - 3 }} more</span></div>
+  {% endif %}
+</div>
+{% endfor %}
+{% endblock %}

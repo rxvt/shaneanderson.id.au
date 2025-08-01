@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% block title %}{{ page.title|striptags }} - {{ SITENAME }}{% endblock %}
+
+{% block file_name %}{{ page.slug }}.exa{% endblock %}
+
+{% block content %}
+<div class="post">
+  <div class="code-line"><span class="line-number">01</span><span class="opcode">LOAD</span> <span class="arg">{{ page.slug }}</span></div>
+  <div class="code-line"><span class="line-number">02</span><span class="opcode">COPY</span> <span class="arg">title</span> <span class="value">"{{ page.title }}"</span></div>
+  {% if page.author %}
+  <div class="code-line"><span class="line-number">03</span><span class="opcode">COPY</span> <span class="arg">author</span> <span class="value">"{{ page.author }}"</span></div>
+  {% endif %}
+  <div class="code-line"><span class="line-number">04</span><span class="opcode">EXEC</span> <span class="arg">DECRYPT_CONTENT</span></div>
+  <div class="code-line"><span class="line-number">05</span><span class="comment">// CONTENT_START</span></div>
+</div>
+
+<div style="margin: 24px 0; padding: 16px; background: rgba(0,0,0,0.3); border-left: 3px solid #78e8dd; border-radius: 0 4px 4px 0;">
+  <div style="color: #c5c5c5; line-height: 1.6; font-size: 14px;">
+    {{ page.content }}
+  </div>
+</div>
+
+<div class="post">
+  <div class="code-line"><span class="line-number">99</span><span class="comment">// CONTENT_END</span></div>
+  <div class="code-line"><span class="line-number">100</span><span class="opcode">EXEC</span> <span class="arg">FINALIZE</span></div>
+</div>
+{% endblock %}
+
+{% block extra_head %}
+  {% if page.description %}
+  <meta name="description" content="{{ page.description }}" />
+  {% endif %}
+{% endblock %}

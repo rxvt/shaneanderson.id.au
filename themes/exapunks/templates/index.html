@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block content %}
+{% if articles %}
+  {% for article in articles %}
+  <div class="post">
+    <div class="code-line"><span class="line-number">{{ "{:02d}".format(loop.index) }}</span><span class="opcode">GRAB</span> <span class="arg">{{ article.url }}</span></div>
+    <div class="code-line"><span class="line-number">{{ "{:02d}".format(loop.index + 1) }}</span><span class="opcode">MARK</span> <span class="arg">{{ article.date.strftime('%Y-%m-%d') }}</span></div>
+    <div class="code-line"><span class="line-number">{{ "{:02d}".format(loop.index + 2) }}</span><span class="opcode">COPY</span> <span class="arg">title</span> <span class="value">"{{ article.title }}"</span></div>
+    {% if article.summary %}
+    <div class="code-line"><span class="line-number">{{ "{:02d}".format(loop.index + 3) }}</span><span class="opcode">COPY</span> <span class="arg">excerpt</span> <span class="value">"{{ article.summary|striptags|truncate(80) }}"</span></div>
+    {% endif %}
+    <div class="code-line"><span class="line-number">{{ "{:02d}".format(loop.index + 4) }}</span><span class="opcode">EXEC</span> <a href="{{ SITEURL }}/{{ article.url }}" class="arg">READ</a></div>
+  </div>
+  {% endfor %}
+{% else %}
+  <div class="post">
+    <div class="code-line"><span class="line-number">01</span><span class="opcode">ERROR</span> <span class="value">"No articles found"</span></div>
+    <div class="code-line"><span class="line-number">02</span><span class="opcode">HINT</span> <span class="arg">Create content in content/ directory</span></div>
+  </div>
+{% endif %}
+{% endblock %}

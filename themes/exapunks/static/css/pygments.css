@@ -1,0 +1,96 @@
+/* Cyberpunk-themed Pygments syntax highlighting */
+/* Matches the exapunks theme color palette */
+
+/* Highlighted line background */
+.hll { background-color: rgba(255, 106, 106, 0.1); }
+
+/* Error */
+.err { 
+    color: #ff6a6a; 
+    background-color: rgba(255, 106, 106, 0.1);
+    border: 1px solid rgba(255, 106, 106, 0.3);
+}
+
+/* Comments */
+.c, .cm, .c1, .cs { 
+    color: #666; 
+    font-style: italic; 
+}
+
+/* Keywords */
+.k, .kc, .kd, .kn, .kr, .ow { 
+    color: #ff6a6a; 
+}
+
+/* Keyword pseudo, keyword type */
+.kp { color: #ff9999; }
+.kt { color: #78e8dd; }
+
+/* Names */
+.n { color: #cfcfcf; }
+.na { color: #9dfba8; }  /* Attribute names */
+.nb { color: #78e8dd; }  /* Built-ins */
+.nc { color: #9dfba8; }  /* Class names */
+.nd { color: #ff9999; }  /* Decorators */
+.ne { color: #ff6a6a; }  /* Exceptions */
+.nf { color: #78e8dd; }  /* Function names */
+.nl { color: #9dfba8; }  /* Labels */
+.nn { color: #78e8dd; }  /* Namespaces */
+.no { color: #ff9999; }  /* Constants */
+.nt { color: #ff6a6a; }  /* Tags */
+.nv, .vc, .vg, .vi { color: #9dfba8; }  /* Variables */
+
+/* Operators */
+.o { color: #ff6a6a; }
+
+/* Punctuation */
+.p { color: #cfcfcf; }
+
+/* Literals */
+.l { color: #9dfba8; }
+
+/* Numbers */
+.m, .mf, .mh, .mi, .mo { color: #9dfba8; }
+
+/* Strings */
+.s, .sb, .sc, .sd, .s2, .se, .sh, .si, .sx, .sr, .s1, .ss { 
+    color: #a8d4a8; 
+}
+
+/* String interpolation */
+.si { 
+    color: #78e8dd; 
+    font-style: italic; 
+}
+
+/* Generic styles */
+.gd { color: #ff6a6a; }  /* Deleted */
+.ge { font-style: italic; }  /* Emphasis */
+.gr { color: #ff6a6a; }  /* Error */
+.gh { color: #9dfba8; }  /* Heading */
+.gi { color: #78e8dd; }  /* Inserted */
+.go { color: #888; }  /* Output */
+.gp { color: #ff9999; }  /* Prompt */
+.gs { }  /* Strong */
+.gu { color: #78e8dd; }  /* Subheading */
+.gt { color: #ff6a6a; }  /* Traceback */
+
+/* Whitespace */
+.w { color: #666; }
+
+/* Built-in pseudo */
+.bp { color: #78e8dd; }
+
+/* Integer long */
+.il { color: #9dfba8; }
+
+/* Enhance code block appearance */
+.highlight {
+    position: relative;
+}
+
+.highlight pre {
+    position: relative;
+    z-index: 2;
+}
+

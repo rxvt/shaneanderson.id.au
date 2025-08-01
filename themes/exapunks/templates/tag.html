@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block title %}{{ tag }} - {{ SITENAME }}{% endblock %}
+
+{% block file_name %}tag/{{ tag }}.exa{% endblock %}
+
+{% block content %}
+<div class="post">
+  <div class="code-line"><span class="line-number">01</span><span class="opcode">FILTER</span> <span class="arg">TAG</span> <span class="value">"{{ tag }}"</span></div>
+  <div class="code-line"><span class="line-number">02</span><span class="opcode">LOAD</span> <span class="arg">MATCHED_ENTRIES</span></div>
+  <div class="code-line"><span class="line-number">03</span><span class="comment">// FOUND {{ articles|length }} ENTRIES</span></div>
+</div>
+
+{% for article in articles %}
+<div class="post">
+  <div class="code-line"><span class="line-number">{{ "{:02d}".format((loop.index * 5) + 4) }}</span><span class="opcode">GRAB</span> <span class="arg">{{ article.url }}</span></div>
+  <div class="code-line"><span class="line-number">{{ "{:02d}".format((loop.index * 5) + 5) }}</span><span class="opcode">MARK</span> <span class="arg">{{ article.date.strftime('%Y-%m-%d') }}</span></div>
+  <div class="code-line"><span class="line-number">{{ "{:02d}".format((loop.index * 5) + 6) }}</span><span class="opcode">COPY</span> <span class="arg">title</span> <span class="value">"{{ article.title }}"</span></div>
+  {% if article.summary %}
+  <div class="code-line"><span class="line-number">{{ "{:02d}".format((loop.index * 5) + 7) }}</span><span class="opcode">COPY</span> <span class="arg">excerpt</span> <span class="value">"{{ article.summary|striptags|truncate(80) }}"</span></div>
+  {% endif %}
+  <div class="code-line"><span class="line-number">{{ "{:02d}".format((loop.index * 5) + 8) }}</span><span class="opcode">EXEC</span> <a href="{{ SITEURL }}/{{ article.url }}" class="arg">read</a></div>
+</div>
+{% endfor %}
+{% endblock %}
