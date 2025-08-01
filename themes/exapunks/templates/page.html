@@ -12,7 +12,7 @@
   <div class="code-line"><span class="line-number">03</span><span class="opcode">COPY</span> <span class="arg">author</span> <span class="value">"{{ page.author }}"</span></div>
   {% endif %}
   <div class="code-line"><span class="line-number">04</span><span class="opcode">EXEC</span> <span class="arg">DECRYPT_CONTENT</span></div>
-  <div class="code-line"><span class="line-number">05</span><span class="comment">// CONTENT_START</span></div>
+  <div class="code-line"><span class="line-number">05</span><span class="code-comment">// CONTENT_START</span></div>
 </div>
 
 <div class="article-content">
@@ -20,7 +20,7 @@
 </div>
 
 <div class="post">
-  <div class="code-line"><span class="line-number">99</span><span class="comment">// CONTENT_END</span></div>
+  <div class="code-line"><span class="line-number">99</span><span class="code-comment">// CONTENT_END</span></div>
   <div class="code-line"><span class="line-number">100</span><span class="opcode">EXEC</span> <span class="arg">FINALIZE</span></div>
 </div>
 {% endblock %}
