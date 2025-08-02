@@ -5,7 +5,7 @@
 {% block file_name %}{{ article.slug }}.exa{% endblock %}
 
 {% block content %}
-<div class="post">
+<div class="post" role="presentation" aria-hidden="true" data-content-ignore="true">
   <div class="code-line"><span class="line-number">01</span><span class="opcode">LOAD</span> <span class="arg">{{ article.slug }}</span></div>
   <div class="code-line"><span class="line-number">02</span><span class="opcode">MARK</span> <span class="arg">{{ article.date.strftime('%Y-%m-%d') }}</span></div>
   <div class="code-line"><span class="line-number">03</span><span class="opcode">COPY</span> <span class="arg">title</span> <span class="value">"{{ article.title }}"</span></div>
@@ -22,17 +22,17 @@
   <div class="code-line"><span class="line-number">08</span><span class="code-comment">// CONTENT_START</span></div>
 </div>
 
-<div class="article-content">
+<article class="article-content" role="main" itemprop="articleBody">
   {{ article.content }}
-</div>
+</article>
 
-<div class="post">
+<div class="post" role="presentation" aria-hidden="true" data-content-ignore="true">
   <div class="code-line"><span class="line-number">99</span><span class="code-comment">// CONTENT_END</span></div>
   <div class="code-line"><span class="line-number">100</span><span class="opcode">EXEC</span> <span class="arg">FINALIZE</span></div>
 </div>
 
 {% if article.prev_article or article.next_article %}
-<div class="post" style="margin-top: 32px;">
+<nav class="post" style="margin-top: 32px;" role="navigation" aria-label="Article navigation" data-content-ignore="true">
   <div class="code-line"><span class="line-number">101</span><span class="comment">// NAVIGATION</span></div>
   {% if article.prev_article %}
   <div class="code-line"><span class="line-number">102</span><span class="opcode">LINK</span> <span class="arg">prev</span> <a href="{{ SITEURL }}/{{ article.prev_article.url }}" class="value">"{{ article.prev_article.title }}"</a></div>
@@ -40,7 +40,7 @@
   {% if article.next_article %}
   <div class="code-line"><span class="line-number">103</span><span class="opcode">LINK</span> <span class="arg">next</span> <a href="{{ SITEURL }}/{{ article.next_article.url }}" class="value">"{{ article.next_article.title }}"</a></div>
   {% endif %}
-</div>
+</nav>
 {% endif %}
 {% endblock %}
 
