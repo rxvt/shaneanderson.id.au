@@ -555,17 +555,17 @@ a:hover {
 
 /* Note admonition */
 .article-content .admonition.note {
-  border-left: 4px solid #78e8dd;
+  border-left: 4px solid #888;
 }
 
 .article-content .admonition.note .admonition-title {
-  color: #78e8dd;
-  text-shadow: 0 0 4px rgba(120, 232, 221, 0.3);
+  color: #c5c5c5;
+  text-shadow: 0 0 4px rgba(197, 197, 197, 0.3);
 }
 
 .article-content .admonition.note .admonition-title::before {
   content: '>> ';
-  color: #78e8dd;
+  color: #888;
   font-weight: normal;
 }
 
