@@ -5,18 +5,30 @@
 {% block content %}
 <div class="category-page">
   <h1>{{ category }}</h1>
-  <p>{{ articles|length }} articles in "{{ category }}"</p>
-  
-  <ul class="article-list">
-    {% for article in articles %}
-    <li class="article-item">
-      <h2><a href="{{ SITEURL }}/{{ article.url }}">{{ article.title }}</a></h2>
-      <time datetime="{{ article.date.isoformat() }}">{{ article.date.strftime('%B %d, %Y') }}</time>
-      {% if article.summary %}
-      <p class="article-summary">{{ article.summary|striptags|truncate(150) }}</p>
-      {% endif %}
-    </li>
-    {% endfor %}
-  </ul>
 </div>
+
+{% if articles %}
+  {% for article in articles %}
+  <article class="post-summary">
+    <header class="post-header">
+      <h2><a href="{{ SITEURL }}/{{ article.url }}">{{ article.title }}</a></h2>
+      <div class="post-meta">
+        <time datetime="{{ article.date.isoformat() }}">{{ article.date.strftime('%B %d, %Y') }}</time>
+        {% if article.category %}
+          <span class="category">{{ article.category }}</span>
+        {% endif %}
+      </div>
+    </header>
+    {% if article.summary %}
+    <div class="post-excerpt">
+      {{ article.summary|striptags }}
+    </div>
+    {% endif %}
+  </article>
+  {% endfor %}
+{% else %}
+  <div class="no-posts">
+    <p>No articles found in this category.</p>
+  </div>
+{% endif %}
 {% endblock %}

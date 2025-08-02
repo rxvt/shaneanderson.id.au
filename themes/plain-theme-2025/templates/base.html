@@ -32,6 +32,9 @@
             <a href="{{ SITEURL }}/{{ cat.url }}">{{ cat|title }}</a>
           {% endfor %}
         {% endif %}
+        {% for cat, articles in categories if cat.name == 'TIL' %}
+          <a href="{{ SITEURL }}/{{ cat.url }}">TIL</a>
+        {% endfor %}
         {% if FEED_ALL_RSS %}
           <a href="{{ FEED_DOMAIN }}/{{ FEED_ALL_RSS }}">RSS</a>
         {% endif %}
