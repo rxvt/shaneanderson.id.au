@@ -16,6 +16,13 @@ S3Fetch solves this by:
 - **Optimized for prefixes**: Only requests objects under your specified prefix, reducing API calls
 - **Configurable threading**: Tune performance with adjustable thread counts
 
+!!! note
+    I wrote the first version of S3Fetch when I wasn't a very good programmer,
+and arguably I'm still not, but I have been working on a version 2 which gets
+rid of the most egregious mistakes such as the God Class, etc. That code has
+been pushed to `main` on the [GitHub repo](https://github.com/rxvt/s3fetch) and
+it works, but I haven't gotten around to releasing a new package yet.
+
 ## How It Works
 
 The basic idea is pretty simple: why wait around?
@@ -30,11 +37,15 @@ S3Fetch does this instead:
 
 1. Start asking S3 for your file list in one thread
 2. As soon as S3 mentions the first file, start downloading it in another thread
-3. Keep downloading files in multiple threads while the first thread is still getting the rest of the list
+3. Keep downloading files in multiple threads while the first thread is still
+getting the rest of the list
 
-So if you're downloading 1,000 files, S3Fetch is already downloading file #1 (and #2, #3, etc.) in separate threads while the main thread is still figuring out what files #500-1000 even are.
+So if you're downloading 1,000 files, S3Fetch is already downloading file #1
+(and #2, #3, etc.) in separate threads while the main thread is still figuring
+out what files #500-1000 even are.
 
-That's basically it - just use separate threads so you don't wait around when you don't have to.
+That's basically it - just use separate threads so you don't wait around when
+you don't have to.
 
 ### Performance Comparison
 
