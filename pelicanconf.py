@@ -49,6 +49,17 @@ DEFAULT_METADATA = {
 CC_LICENSE = {"name": "Creative Commons Attribution", "version": "4.0", "slug": "by"}
 ROBOTS = "index, follow"
 
+# Markdown extensions
+MARKDOWN = {
+    'extension_configs': {
+        'markdown.extensions.admonition': {},
+        'markdown.extensions.codehilite': {'css_class': 'highlight'},
+        'markdown.extensions.extra': {},
+        'markdown.extensions.meta': {},
+    },
+    'output_format': 'html5',
+}
+
 # Static files configuration for GitHub Pages
 STATIC_PATHS = ['extras']
 EXTRA_PATH_METADATA = {'extras/CNAME': {'path': 'CNAME'}}
