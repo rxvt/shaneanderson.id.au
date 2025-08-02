@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+
+{% block title %}{{ article.title|striptags }} - {{ SITENAME }}{% endblock %}
+
+{% block content %}
+<article class="article">
+  <header class="article-header">
+    <h1>{{ article.title }}</h1>
+    <div class="article-meta">
+      <time datetime="{{ article.date.isoformat() }}">{{ article.date.strftime('%B %d, %Y') }}</time>
+      {% if article.category %}
+        <span class="category">{{ article.category }}</span>
+      {% endif %}
+      {% if article.tags %}
+        {% for tag in article.tags %}
+          <span class="tag">{{ tag }}</span>
+        {% endfor %}
+      {% endif %}
+    </div>
+  </header>
+
+  <div class="article-content">
+    {{ article.content }}
+  </div>
+</article>
+
+{% if article.prev_article or article.next_article %}
+<nav class="article-navigation">
+  {% if article.prev_article %}
+    <div class="nav-previous">
+      <span class="nav-label">Previous</span>
+      <a href="{{ SITEURL }}/{{ article.prev_article.url }}">{{ article.prev_article.title }}</a>
+    </div>
+  {% endif %}
+  {% if article.next_article %}
+    <div class="nav-next">
+      <span class="nav-label">Next</span>
+      <a href="{{ SITEURL }}/{{ article.next_article.url }}">{{ article.next_article.title }}</a>
+    </div>
+  {% endif %}
+</nav>
+{% endif %}
+{% endblock %}
+
+{% block extra_head %}
+  {% if article.description %}
+  <meta name="description" content="{{ article.description }}" />
+  {% endif %}
+  {% if article.tags %}
+  <meta name="keywords" content="{% for tag in article.tags %}{{ tag }}{% if not loop.last %}, {% endif %}{% endfor %}" />
+  {% endif %}
+{% endblock %}

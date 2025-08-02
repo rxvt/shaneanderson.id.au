@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="{% block html_lang %}{{ DEFAULT_LANG }}{% endblock %}">
+<head>
+  <meta charset="UTF-8" />
+  <title>{% block title %}{{ SITENAME }}{% if page_name %} - {{ page_name }}{% endif %}{% endblock %}</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  {% if FEED_ALL_ATOM %}
+  <link href="{{ FEED_DOMAIN }}/{{ FEED_ALL_ATOM }}" type="application/atom+xml" rel="alternate" title="{{ SITENAME }} Atom Feed" />
+  {% endif %}
+  {% if FEED_ALL_RSS %}
+  <link href="{{ FEED_DOMAIN }}/{{ FEED_ALL_RSS }}" type="application/rss+xml" rel="alternate" title="{{ SITENAME }} RSS Feed" />
+  {% endif %}
+  
+  <link rel="stylesheet" type="text/css" href="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/css/main.css" />
+  <link rel="stylesheet" type="text/css" href="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/css/pygments.css" />
+  
+  {% block extra_head %}{% endblock %}
+</head>
+<body>
+  <div class="container">
+    <header class="site-header">
+      <h1><a href="{{ SITEURL }}/">{{ SITENAME }}</a></h1>
+      <nav class="site-nav">
+        {% if DISPLAY_PAGES_ON_MENU -%}
+          {% for pg in pages %}
+            <a href="{{ SITEURL }}/{{ pg.url }}">{{ pg.title }}</a>
+          {% endfor %}
+        {% endif %}
+        {% if DISPLAY_CATEGORIES_ON_MENU -%}
+          {% for cat, null in categories %}
+            <a href="{{ SITEURL }}/{{ cat.url }}">{{ cat|title }}</a>
+          {% endfor %}
+        {% endif %}
+        {% if FEED_ALL_RSS %}
+          <a href="{{ FEED_DOMAIN }}/{{ FEED_ALL_RSS }}">RSS</a>
+        {% endif %}
+      </nav>
+    </header>
+
+    <main class="content">
+      {% block content %}{% endblock %}
+    </main>
+
+    <footer class="site-footer">
+      <p>&copy; {{ AUTHOR }}. All rights reserved.</p>
+      {% if SOCIAL %}
+        <div class="social-links">
+          {% for name, link in SOCIAL %}
+            <a href="{{ link }}">{{ name.title() }}</a>
+          {% endfor %}
+        </div>
+      {% endif %}
+    </footer>
+  </div>
+  
+  {% block extra_scripts %}{% endblock %}
+</body>
+</html>

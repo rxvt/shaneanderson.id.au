@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block title %}Categories - {{ SITENAME }}{% endblock %}
+
+{% block content %}
+<div class="categories-page">
+  <h1>Categories</h1>
+  <p>{{ categories|length }} categories total</p>
+  
+  {% for category, articles in categories %}
+  <div class="category-section">
+    <h2><a href="{{ SITEURL }}/{{ category.url }}">{{ category }}</a></h2>
+    <p>{{ articles|length }} articles</p>
+    <ul class="article-list">
+      {% for article in articles[:5] %}
+      <li>
+        <a href="{{ SITEURL }}/{{ article.url }}">{{ article.title }}</a>
+        <time datetime="{{ article.date.isoformat() }}">{{ article.date.strftime('%B %d, %Y') }}</time>
+      </li>
+      {% endfor %}
+      {% if articles|length > 5 %}
+      <li><a href="{{ SITEURL }}/{{ category.url }}">View all {{ articles|length }} articles →</a></li>
+      {% endif %}
+    </ul>
+  </div>
+  {% endfor %}
+</div>
+{% endblock %}

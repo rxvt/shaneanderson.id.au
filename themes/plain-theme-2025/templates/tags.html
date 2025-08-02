@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block title %}Tags - {{ SITENAME }}{% endblock %}
+
+{% block content %}
+<div class="tags-page">
+  <h1>Tags</h1>
+  <p>{{ tags|length }} tags total</p>
+  
+  {% for tag, articles in tags %}
+  <div class="tag-section">
+    <h2><a href="{{ SITEURL }}/{{ tag.url }}">{{ tag }}</a></h2>
+    <p>{{ articles|length }} articles</p>
+    <ul class="article-list">
+      {% for article in articles[:3] %}
+      <li>
+        <a href="{{ SITEURL }}/{{ article.url }}">{{ article.title }}</a>
+        <time datetime="{{ article.date.isoformat() }}">{{ article.date.strftime('%B %d, %Y') }}</time>
+      </li>
+      {% endfor %}
+      {% if articles|length > 3 %}
+      <li><a href="{{ SITEURL }}/{{ tag.url }}">View all {{ articles|length }} articles →</a></li>
+      {% endif %}
+    </ul>
+  </div>
+  {% endfor %}
+</div>
+{% endblock %}

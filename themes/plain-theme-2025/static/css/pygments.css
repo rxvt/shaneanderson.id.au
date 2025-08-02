@@ -1,0 +1,223 @@
+/* Clean, minimal syntax highlighting for code blocks */
+/* GitHub-inspired color scheme */
+
+/* Highlighted line background */
+.hll { background-color: #f8f8f8; }
+
+/* Error */
+.err { 
+    color: #a61717; 
+    background-color: #e3d2d2;
+}
+
+/* Comment */
+.c { color: #6a737d; font-style: italic; }
+
+/* Comment.Hashbang */
+.ch { color: #6a737d; font-style: italic; }
+
+/* Comment.Multiline */
+.cm { color: #6a737d; font-style: italic; }
+
+/* Comment.Preproc */
+.cp { color: #6a737d; font-weight: bold; }
+
+/* Comment.PreprocFile */
+.cpf { color: #6a737d; font-style: italic; }
+
+/* Comment.Single */
+.c1 { color: #6a737d; font-style: italic; }
+
+/* Comment.Special */
+.cs { color: #6a737d; font-weight: bold; font-style: italic; }
+
+/* Generic.Deleted */
+.gd { color: #d73a49; }
+
+/* Generic.Emph */
+.ge { font-style: italic; }
+
+/* Generic.Error */
+.gr { color: #d73a49; }
+
+/* Generic.Heading */
+.gh { color: #005cc5; font-weight: bold; }
+
+/* Generic.Inserted */
+.gi { color: #28a745; }
+
+/* Generic.Output */
+.go { color: #6a737d; }
+
+/* Generic.Prompt */
+.gp { color: #6a737d; }
+
+/* Generic.Strong */
+.gs { font-weight: bold; }
+
+/* Generic.Subheading */
+.gu { color: #6a737d; }
+
+/* Generic.Traceback */
+.gt { color: #d73a49; }
+
+/* Keyword */
+.k { color: #d73a49; font-weight: bold; }
+
+/* Keyword.Constant */
+.kc { color: #005cc5; font-weight: bold; }
+
+/* Keyword.Declaration */
+.kd { color: #d73a49; font-weight: bold; }
+
+/* Keyword.Namespace */
+.kn { color: #d73a49; font-weight: bold; }
+
+/* Keyword.Pseudo */
+.kp { color: #d73a49; font-weight: bold; }
+
+/* Keyword.Reserved */
+.kr { color: #d73a49; font-weight: bold; }
+
+/* Keyword.Type */
+.kt { color: #d73a49; font-weight: bold; }
+
+/* Literal */
+.l { color: #032f62; }
+
+/* Literal.Date */
+.ld { color: #032f62; }
+
+/* Literal.Number */
+.m { color: #005cc5; }
+
+/* Literal.Number.Float */
+.mf { color: #005cc5; }
+
+/* Literal.Number.Hex */
+.mh { color: #005cc5; }
+
+/* Literal.Number.Integer */
+.mi { color: #005cc5; }
+
+/* Literal.Number.Integer.Long */
+.il { color: #005cc5; }
+
+/* Literal.Number.Oct */
+.mo { color: #005cc5; }
+
+/* Name */
+.n { color: #24292e; }
+
+/* Name.Attribute */
+.na { color: #6f42c1; }
+
+/* Name.Builtin */
+.nb { color: #005cc5; }
+
+/* Name.Builtin.Pseudo */
+.bp { color: #005cc5; }
+
+/* Name.Class */
+.nc { color: #6f42c1; font-weight: bold; }
+
+/* Name.Constant */
+.no { color: #005cc5; }
+
+/* Name.Decorator */
+.nd { color: #6f42c1; }
+
+/* Name.Entity */
+.ni { color: #24292e; }
+
+/* Name.Exception */
+.ne { color: #d73a49; font-weight: bold; }
+
+/* Name.Function */
+.nf { color: #6f42c1; }
+
+/* Name.Function.Magic */
+.fm { color: #6f42c1; }
+
+/* Name.Label */
+.nl { color: #24292e; font-weight: bold; }
+
+/* Name.Namespace */
+.nn { color: #24292e; }
+
+/* Name.Other */
+.nx { color: #24292e; }
+
+/* Name.Property */
+.py { color: #24292e; }
+
+/* Name.Tag */
+.nt { color: #22863a; }
+
+/* Name.Variable */
+.nv { color: #e36209; }
+
+/* Name.Variable.Class */
+.vc { color: #e36209; }
+
+/* Name.Variable.Global */
+.vg { color: #e36209; }
+
+/* Name.Variable.Instance */
+.vi { color: #e36209; }
+
+/* Name.Variable.Magic */
+.vm { color: #e36209; }
+
+/* Operator */
+.o { color: #d73a49; }
+
+/* Operator.Word */
+.ow { color: #d73a49; font-weight: bold; }
+
+/* Punctuation */
+.p { color: #24292e; }
+
+/* String */
+.s { color: #032f62; }
+
+/* String.Affix */
+.sa { color: #032f62; }
+
+/* String.Backtick */
+.sb { color: #032f62; }
+
+/* String.Char */
+.sc { color: #032f62; }
+
+/* String.Delimiter */
+.sd { color: #032f62; }
+
+/* String.Doc */
+.s2 { color: #032f62; }
+
+/* String.Double */
+.se { color: #032f62; }
+
+/* String.Escape */
+.sh { color: #032f62; }
+
+/* String.Heredoc */
+.si { color: #032f62; }
+
+/* String.Interpol */
+.sx { color: #032f62; }
+
+/* String.Other */
+.sr { color: #032f62; }
+
+/* String.Regex */
+.s1 { color: #032f62; }
+
+/* String.Single */
+.ss { color: #032f62; }
+
+/* String.Symbol */
+.w { color: #6a737d; }
+
+/* Text.Whitespace */

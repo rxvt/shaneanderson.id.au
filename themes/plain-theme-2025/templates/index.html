@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block content %}
+{% if articles %}
+  {% for article in articles %}
+  <article class="post-summary">
+    <header class="post-header">
+      <h2><a href="{{ SITEURL }}/{{ article.url }}">{{ article.title }}</a></h2>
+      <div class="post-meta">
+        <time datetime="{{ article.date.isoformat() }}">{{ article.date.strftime('%B %d, %Y') }}</time>
+        {% if article.category %}
+          <span class="category">{{ article.category }}</span>
+        {% endif %}
+      </div>
+    </header>
+    {% if article.summary %}
+    <div class="post-excerpt">
+      {{ article.summary|striptags }}
+    </div>
+    {% endif %}
+  </article>
+  {% endfor %}
+{% else %}
+  <div class="no-posts">
+    <p>No articles found.</p>
+    <p>Create content in the content/ directory to get started.</p>
+  </div>
+{% endif %}
+{% endblock %}
