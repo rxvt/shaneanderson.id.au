@@ -18,10 +18,10 @@ S3Fetch solves this by:
 
 !!! note
     I wrote the first version of S3Fetch when I wasn't a very good programmer,
-and arguably I'm still not, but I have been working on a version 2 which gets
-rid of the most egregious mistakes such as the God Class, etc. That code has
-been pushed to `main` on the [GitHub repo](https://github.com/rxvt/s3fetch) and
-it works, but I haven't gotten around to releasing a new package yet.
+    and arguably I'm still not, but I have been working on a version 2 which gets
+    rid of the most egregious mistakes such as the God Class, etc. That code has
+    been pushed to `main` on the [GitHub repo](https://github.com/rxvt/s3fetch) and
+    it works, but I haven't gotten around to releasing a new package yet.
 
 ## How It Works
 
