@@ -499,3 +499,152 @@ a:hover {
   border-bottom-color: #9dfba8;
   text-shadow: 0 0 8px rgba(157, 251, 168, 0.4);
 }
+
+/* Admonition styles */
+.article-content .admonition {
+  background: linear-gradient(135deg, rgba(0, 0, 0, 0.7) 0%, rgba(17, 17, 17, 0.9) 100%);
+  border: 1px solid #333;
+  border-radius: 0 6px 6px 0;
+  margin: 20px 0;
+  padding: 0;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 
+    inset 0 0 10px rgba(0, 0, 0, 0.4),
+    0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.article-content .admonition::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent 0px,
+    transparent 1px,
+    rgba(255, 255, 255, 0.02) 1px,
+    rgba(255, 255, 255, 0.02) 2px
+  );
+  pointer-events: none;
+}
+
+.article-content .admonition-title {
+  background: linear-gradient(90deg, rgba(0, 0, 0, 0.8) 0%, rgba(17, 17, 17, 0.6) 100%);
+  color: #c5c5c5;
+  font-family: 'Courier New', monospace;
+  font-size: 14px;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  padding: 12px 16px;
+  margin: 0;
+  border-bottom: 1px solid #333;
+  position: relative;
+  z-index: 1;
+}
+
+.article-content .admonition p:not(.admonition-title) {
+  padding: 16px;
+  margin: 0;
+  position: relative;
+  z-index: 1;
+}
+
+/* Note admonition */
+.article-content .admonition.note {
+  border-left: 4px solid #78e8dd;
+}
+
+.article-content .admonition.note .admonition-title {
+  color: #78e8dd;
+  text-shadow: 0 0 4px rgba(120, 232, 221, 0.3);
+}
+
+.article-content .admonition.note .admonition-title::before {
+  content: '>> ';
+  color: #78e8dd;
+  font-weight: normal;
+}
+
+/* Warning admonition */
+.article-content .admonition.warning {
+  border-left: 4px solid #ff9966;
+}
+
+.article-content .admonition.warning .admonition-title {
+  color: #ff9966;
+  text-shadow: 0 0 4px rgba(255, 153, 102, 0.3);
+}
+
+.article-content .admonition.warning .admonition-title::before {
+  content: '!! ';
+  color: #ff9966;
+  font-weight: normal;
+}
+
+/* Tip admonition */
+.article-content .admonition.tip {
+  border-left: 4px solid #9dfba8;
+}
+
+.article-content .admonition.tip .admonition-title {
+  color: #9dfba8;
+  text-shadow: 0 0 4px rgba(157, 251, 168, 0.3);
+}
+
+.article-content .admonition.tip .admonition-title::before {
+  content: ':: ';
+  color: #9dfba8;
+  font-weight: normal;
+}
+
+/* Important admonition */
+.article-content .admonition.important {
+  border-left: 4px solid #ff6a6a;
+}
+
+.article-content .admonition.important .admonition-title {
+  color: #ff6a6a;
+  text-shadow: 0 0 4px rgba(255, 106, 106, 0.3);
+}
+
+.article-content .admonition.important .admonition-title::before {
+  content: '!> ';
+  color: #ff6a6a;
+  font-weight: normal;
+}
+
+/* Caution admonition */
+.article-content .admonition.caution {
+  border-left: 4px solid #ffcc66;
+}
+
+.article-content .admonition.caution .admonition-title {
+  color: #ffcc66;
+  text-shadow: 0 0 4px rgba(255, 204, 102, 0.3);
+}
+
+.article-content .admonition.caution .admonition-title::before {
+  content: '/! ';
+  color: #ffcc66;
+  font-weight: normal;
+}
+
+/* Danger admonition */
+.article-content .admonition.danger {
+  border-left: 4px solid #ff4444;
+}
+
+.article-content .admonition.danger .admonition-title {
+  color: #ff4444;
+  text-shadow: 0 0 4px rgba(255, 68, 68, 0.3);
+}
+
+.article-content .admonition.danger .admonition-title::before {
+  content: 'XX ';
+  color: #ff4444;
+  font-weight: normal;
+}
