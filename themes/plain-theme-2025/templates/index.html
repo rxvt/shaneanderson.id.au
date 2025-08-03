@@ -11,6 +11,11 @@
         {% if article.category %}
           <a href="{{ SITEURL }}/{{ article.category.url }}" class="category">{{ article.category }}</a>
         {% endif %}
+        {% if article.tags %}
+          {% for tag in article.tags %}
+            <a href="{{ SITEURL }}/{{ tag.url }}" class="tag">{{ tag }}</a>
+          {% endfor %}
+        {% endif %}
       </div>
     </header>
     {% if article.summary %}

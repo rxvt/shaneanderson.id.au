@@ -12,13 +12,13 @@
     <h2><a href="{{ SITEURL }}/{{ tag.url }}">{{ tag }}</a></h2>
     <p>{{ articles|length }} articles</p>
     <ul class="article-list">
-      {% for article in articles[:3] %}
+      {% for article in articles[:5] %}
       <li>
         <a href="{{ SITEURL }}/{{ article.url }}">{{ article.title }}</a>
         <time datetime="{{ article.date.isoformat() }}">{{ article.date.strftime('%B %d, %Y') }}</time>
       </li>
       {% endfor %}
-      {% if articles|length > 3 %}
+      {% if articles|length > 5 %}
       <li><a href="{{ SITEURL }}/{{ tag.url }}">View all {{ articles|length }} articles →</a></li>
       {% endif %}
     </ul>
