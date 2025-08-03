@@ -13,8 +13,9 @@ You can find all my configuration, etc files [here](https://github.com/rxvt/dotf
 [S3Fetch](https://github.com/rxvt/s3fetch) is a simple & fast multi-threaded S3 download tool designed for efficiently downloading objects from Amazon S3 buckets.
 
 **Key Features:**
+
 - Multi-threaded concurrent downloads
-- Starts downloading immediately while still listing objects
+- Starts downloading immediately while still listing objects in the background
 - Optimized for large buckets with millions of objects
 - Configurable threading for performance tuning
 - Regular expression filtering support
