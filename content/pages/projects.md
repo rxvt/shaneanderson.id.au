@@ -4,7 +4,7 @@ Status: published
 
 ## Current Projects
 
-You can find all my projects and contributions on **[GitHub @rxvt](https://github.com/rxvt)**.
+You can find all my projects and contributions on [GitHub @rxvt](https://github.com/rxvt).
 
 ### Dot files
 
@@ -12,7 +12,7 @@ You can find all my configuration, etc files [here](https://github.com/rxvt/dotf
 
 ### S3Fetch
 
-**[S3Fetch](https://github.com/rxvt/s3fetch)** is a simple & fast multi-threaded S3 download tool designed for efficiently downloading objects from Amazon S3 buckets.
+[S3Fetch](https://github.com/rxvt/s3fetch) is a simple & fast multi-threaded S3 download tool designed for efficiently downloading objects from Amazon S3 buckets.
 
 **Key Features:**
 - Multi-threaded concurrent downloads
@@ -26,6 +26,7 @@ You can find all my configuration, etc files [here](https://github.com/rxvt/dotf
 **Installation:** Available via PyPI using `pipx install s3fetch`
 
 → [Read the detailed blog post about S3Fetch](/introducing-s3fetch.html)
+
 → [View source code on GitHub](https://github.com/rxvt/s3fetch)
 
 ---
