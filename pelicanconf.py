@@ -37,7 +37,7 @@ SOCIAL = (
 DEFAULT_PAGINATION = True
 
 # Theme configuration
-THEME = "themes/exapunks"
+THEME = "themes/plain-theme-2025"
 
 # Menu settings
 DISPLAY_PAGES_ON_MENU = True
