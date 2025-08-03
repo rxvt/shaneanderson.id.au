@@ -9,7 +9,7 @@
     <div class="article-meta">
       <time datetime="{{ article.date.isoformat() }}">{{ article.date.strftime('%B %d, %Y') }}</time>
       {% if article.category %}
-        <span class="category">{{ article.category }}</span>
+        <a href="{{ SITEURL }}/{{ article.category.url }}" class="category">{{ article.category }}</a>
       {% endif %}
       {% if article.tags %}
         {% for tag in article.tags %}

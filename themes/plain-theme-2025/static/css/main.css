@@ -122,6 +122,13 @@ body {
   padding: 2px 8px;
   border-radius: 4px;
   font-size: 13px;
+  color: inherit;
+  text-decoration: none;
+}
+
+.post-meta .category:hover {
+  color: inherit;
+  text-decoration: none;
 }
 
 .post-excerpt {
@@ -169,6 +176,13 @@ body {
   padding: 2px 8px;
   border-radius: 4px;
   font-size: 13px;
+  color: inherit;
+  text-decoration: none;
+}
+
+.article-meta .category:hover {
+  color: inherit;
+  text-decoration: none;
 }
 
 .tag {
