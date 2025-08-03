@@ -6,6 +6,10 @@ Status: published
 
 You can find all my projects and contributions on **[GitHub @rxvt](https://github.com/rxvt)**.
 
+### Dot files
+
+You can find all my configuration, etc files [here](https://github.com/rxvt/dotfiles). I use [Chezmoi](https://chezmoi.io) to manage everything.
+
 ### S3Fetch
 
 **[S3Fetch](https://github.com/rxvt/s3fetch)** is a simple & fast multi-threaded S3 download tool designed for efficiently downloading objects from Amazon S3 buckets.
@@ -21,7 +25,7 @@ You can find all my projects and contributions on **[GitHub @rxvt](https://githu
 
 **Installation:** Available via PyPI using `pipx install s3fetch`
 
-→ [Read the detailed blog post about S3Fetch](/introducing-s3fetch.html)  
+→ [Read the detailed blog post about S3Fetch](/introducing-s3fetch.html)
 → [View source code on GitHub](https://github.com/rxvt/s3fetch)
 
 ---
