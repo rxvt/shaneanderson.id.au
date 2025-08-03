@@ -2,8 +2,6 @@ Title: Projects
 Slug: projects
 Status: published
 
-## Current Projects
-
 You can find all my projects and contributions on [GitHub @rxvt](https://github.com/rxvt).
 
 ### Dot files
