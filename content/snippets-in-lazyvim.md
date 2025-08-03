@@ -7,7 +7,7 @@ Summary: It wasn't obvious to me how to create snippets in LazyVim so documentin
 
 Took me way too much effort to figure this out and searching for info resulted in a lot of posts with  other people asking the same question or outdated information as LazyVim has changed its plugins a bunch of times, hopefully this helps someone else out there.
 
-This example will use the template I'm using for my blog posts.
+This example will use the template I'm using for my blog posts and is compatible with the [Blink](https://github.com/saghen/blink.cmp) plugin that LazyVim is using for completions (under [Extras](https://www.lazyvim.org/extras/coding/blink)) in 2025.
 
 ```bash
 mkdir ~/.config/nvim/snippets
