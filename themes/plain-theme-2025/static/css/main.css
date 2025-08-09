@@ -292,6 +292,14 @@ body {
   font-size: 14px;
 }
 
+.article-content img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto 24px auto;
+  border-radius: 4px;
+}
+
 /* Article navigation */
 .article-navigation {
   display: flex;
