@@ -65,5 +65,8 @@ MARKDOWN = {
 }
 
 # Static files configuration for GitHub Pages
-STATIC_PATHS = ["extras"]
+STATIC_PATHS = [
+    "extras",
+    "images",
+]
 EXTRA_PATH_METADATA = {"extras/CNAME": {"path": "CNAME"}}
