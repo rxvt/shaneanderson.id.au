@@ -208,3 +208,4 @@ __marimo__/
 
 # Pelican
 output
+.DS_Store
