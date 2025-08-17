@@ -21,7 +21,7 @@ I make a few organizational changes that help keep larger projects maintainable:
 
 This structure requires a few small configuration changes to work properly:
 
-### 1. Update Django Settings Module
+### 1. Tell Django where your Settings module is
 
 Django needs to know the new path to your settings file:
 
@@ -29,9 +29,9 @@ Django needs to know the new path to your settings file:
 export DJANGO_SETTINGS_MODULE="config.settings.local"
 ```
 
-### 2. Adjust BASE_DIR Path
+### 2. Adjust BASE_DIR Path in your Settings Module
 
-You'll need to add an additional `.parent` to the `BASE_DIR` statement since the `settings` directory is nested one level deeper:
+You'll need to add an additional `.parent` to the `BASE_DIR` statement in your `settings` module since the `config/settings` directory is now nested one level deeper:
 
 ```python
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -40,7 +40,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent.parent
 
 ### 3. Add Apps Directory to Python Path
 
-Finally, add the `apps` directory to your Python path so Django can find your applications:
+Finally, also in your `settings` module add the `apps` directory to your Python path so Django can find your applications:
 
 ```python
 # Add apps directory to Python path
