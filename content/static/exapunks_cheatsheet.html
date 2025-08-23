@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EXAPUNKS EXA Instructions</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #1a0a0a, #1a0f15, #1f0a1a);
+            font-family: 'JetBrains Mono', monospace;
+            color: #aa8899;
+            min-height: 100vh;
+            padding: 20px;
+            overflow-x: auto;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: rgba(15, 10, 12, 0.95);
+            border: 1px solid #554455;
+            border-radius: 6px;
+            box-shadow: 
+                0 0 10px rgba(85, 68, 85, 0.2),
+                inset 0 0 10px rgba(85, 68, 85, 0.05);
+        }
+        
+        .header {
+            background: linear-gradient(90deg, #1f1a1f, #281822);
+            padding: 15px 25px;
+            border-bottom: 1px solid #554455;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(85, 68, 85, 0.1), transparent);
+            animation: scan 4s infinite;
+        }
+        
+        @keyframes scan {
+            0% { left: -100%; }
+            100% { left: 100%; }
+        }
+        
+        .title {
+            color: #bbaaaa;
+            font-size: 28px;
+            font-weight: bold;
+            text-shadow: 0 0 3px #776677;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .version {
+            background: #cc3366;
+            color: #fff;
+            padding: 4px 8px;
+            border-radius: 3px;
+            font-size: 12px;
+            font-weight: bold;
+        }
+        
+        .content {
+            padding: 25px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 25px;
+        }
+        
+        .section {
+            background: rgba(20, 15, 15, 0.6);
+            border: 1px solid #443344;
+            border-radius: 4px;
+            padding: 20px;
+            position: relative;
+        }
+        
+        .section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, #cc3366, #775577, #9955aa);
+        }
+        
+        .section-title {
+            color: #cc3366;
+            font-size: 16px;
+            font-weight: bold;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+        }
+        
+        .instruction {
+            display: flex;
+            margin-bottom: 10px;
+            padding: 6px 8px;
+            background: rgba(0, 0, 0, 0.4);
+            border-left: 2px solid #9955aa;
+            border-radius: 2px;
+            transition: all 0.2s ease;
+        }
+        
+        .instruction:hover {
+            background: rgba(85, 68, 85, 0.1);
+            box-shadow: 0 0 4px rgba(85, 68, 85, 0.3);
+        }
+        
+        .cmd {
+            color: #bb99bb;
+            font-weight: bold;
+            min-width: 80px;
+        }
+        
+        .args {
+            color: #aa7799;
+            margin: 0 10px;
+            min-width: 120px;
+        }
+        
+        .desc {
+            color: #888888;
+            flex: 1;
+        }
+        
+        .note {
+            background: rgba(204, 51, 102, 0.08);
+            border: 1px solid #cc3366;
+            border-radius: 4px;
+            padding: 15px;
+            margin-top: 20px;
+            color: #aa7799;
+        }
+        
+        .note-title {
+            color: #cc3366;
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+        
+        .registers {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+            gap: 10px;
+            margin-top: 15px;
+        }
+        
+        .register {
+            background: rgba(153, 85, 170, 0.1);
+            border: 1px solid #9955aa;
+            padding: 8px;
+            text-align: center;
+            border-radius: 3px;
+            color: #bb99bb;
+            font-weight: bold;
+        }
+        
+        .footer {
+            background: rgba(15, 10, 12, 0.8);
+            padding: 15px 25px;
+            border-top: 1px solid #443344;
+            text-align: center;
+            color: #555555;
+            font-size: 12px;
+        }
+        
+        .blink {
+            animation: blink 2s infinite;
+        }
+        
+        @keyframes blink {
+            0%, 50% { opacity: 1; }
+            51%, 100% { opacity: 0.3; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="title">
+                <span>◉</span>
+                EXAPUNKS EXA INSTRUCTION SET
+                <span class="version">v2.1</span>
+                <span class="blink">●</span>
+            </div>
+        </div>
+        
+        <div class="content">
+            <div class="section">
+                <div class="section-title">Data Movement</div>
+                <div class="instruction">
+                    <span class="cmd">COPY</span>
+                    <span class="args">R/N R</span>
+                    <span class="desc">Copy value to register</span>
+                </div>
+                <div class="instruction">
+                    <span class="cmd">ADDI</span>
+                    <span class="args">R/N R/N R</span>
+                    <span class="desc">Add and store result</span>
+                </div>
+                <div class="instruction">
+                    <span class="cmd">SUBI</span>
+                    <span class="args">R/N R/N R</span>
+                    <span class="desc">Subtract and store result</span>
+                </div>
+                <div class="instruction">
+                    <span class="cmd">MULI</span>
+                    <span class="args">R/N R/N R</span>
+                    <span class="desc">Multiply and store result</span>
+                </div>
+                <div class="instruction">
+                    <span class="cmd">DIVI</span>
+                    <span class="args">R/N R/N R</span>
+                    <span class="desc">Divide and store result</span>
+                </div>
+                <div class="instruction">
+                    <span class="cmd">MODI</span>
+                    <span class="args">R/N R/N R</span>
+                    <span class="desc">Modulo and store result</span>
+                </div>
+                <div class="instruction">
+                    <span class="cmd">SWIZ</span>
+                    <span class="args">R/N R/N R</span>
+                    <span class="desc">Extract digits from value</span>
+                </div>
+            </div>
+            
+            <div class="section">
+                <div class="section-title">Control Flow</div>
+                <div class="instruction">
+                    <span class="cmd">MARK</span>
+                    <span class="args">L</span>
+                    <span class="desc">Define a label</span>
+                </div>
+                <div class="instruction">
+                    <span class="cmd">JUMP</span>
+                    <span class="args">L</span>
+                    <span class="desc">Unconditional jump to label</span>
+                </div>
+                <div class="instruction">
+                    <span class="cmd">TJMP</span>
+                    <span class="args">R/N L</span>
+                    <span class="desc">Jump if value > 0</span>
+                </div>
+                <div class="instruction">
+                    <span class="cmd">FJMP</span>
+                    <span class="args">R/N L</span>
+                    <span class="desc">Jump if value ≤ 0</span>
+                </div>
+                <div class="instruction">
+                    <span class="cmd">TEST</span>
+                    <span class="args">R/N = R/N</span>
+                    <span class="desc">Test equality (>, <, =, ≠)</span>
+                </div>
+                <div class="instruction">
+                    <span class="cmd">HALT</span>
+                    <span class="args"></span>
+                    <span class="desc">Terminate EXA execution</span>
+                </div>
+            </div>
+            
+            <div class="section">
+                <div class="section-title">Communication</div>
+                <div class="instruction">
+                    <span class="cmd">LINK</span>
+                    <span class="args">R/N</span>
+                    <span class="desc">Move through network link</span>
+                </div>
+                <div class="instruction">
+                    <span class="cmd">HOST</span>
+                    <span class="args">R</span>
+                    <span class="desc">Get current host identifier</span>
+                </div>
+                <div class="instruction">
+                    <span class="cmd">MODE</span>
+                    <span class="args"></span>
+                    <span class="desc">Toggle between local/global mode</span>
+                </div>
+                <div class="instruction">
+                    <span class="cmd">VOID</span>
+                    <span class="args">M</span>
+                    <span class="desc">Discard message from M register</span>
+                </div>
+            </div>
+            
+            <div class="section">
+                <div class="section-title">File Operations</div>
+                <div class="instruction">
+                    <span class="cmd">GRAB</span>
+                    <span class="args">R/N</span>
+                    <span class="desc">Hold file by ID</span>
+                </div>
+                <div class="instruction">
+                    <span class="cmd">FILE</span>
+                    <span class="args">R</span>
+                    <span class="desc">Get held file ID</span>
+                </div>
+                <div class="instruction">
+                    <span class="cmd">SEEK</span>
+                    <span class="args">R/N</span>
+                    <span class="desc">Move file cursor position</span>
+                </div>
+                <div class="instruction">
+                    <span class="cmd">DROP</span>
+                    <span class="args"></span>
+                    <span class="desc">Release held file</span>
+                </div>
+                <div class="instruction">
+                    <span class="cmd">WIPE</span>
+                    <span class="args"></span>
+                    <span class="desc">Delete held file</span>
+                </div>
+                <div class="instruction">
+                    <span class="cmd">MAKE</span>
+                    <span class="args"></span>
+                    <span class="desc">Create new file</span>
+                </div>
+            </div>
+            
+            <div class="section">
+                <div class="section-title">EXA Management</div>
+                <div class="instruction">
+                    <span class="cmd">REPL</span>
+                    <span class="args">L</span>
+                    <span class="desc">Replicate EXA, jump to label</span>
+                </div>
+                <div class="instruction">
+                    <span class="cmd">NOOP</span>
+                    <span class="args"></span>
+                    <span class="desc">No operation (wait 1 cycle)</span>
+                </div>
+                <div class="instruction">
+                    <span class="cmd">KILL</span>
+                    <span class="args"></span>
+                    <span class="desc">Destroy EXA</span>
+                </div>
+            </div>
+            
+            <div class="section">
+                <div class="section-title">Registers & Values</div>
+                <div class="registers">
+                    <div class="register">X</div>
+                    <div class="register">T</div>
+                    <div class="register">F</div>
+                    <div class="register">M</div>
+                </div>
+                <div style="margin-top: 15px; color: #888888; font-size: 14px;">
+                    <strong style="color: #bb99bb;">X, T:</strong> General purpose registers<br>
+                    <strong style="color: #bb99bb;">F:</strong> File I/O register<br>
+                    <strong style="color: #bb99bb;">M:</strong> Message passing register
+                </div>
+            </div>
+        </div>
+        
+        <div class="note">
+            <div class="note-title">SYNTAX NOTES</div>
+            <strong>R</strong> = Register (X, T, F, M) | <strong>N</strong> = Number (-9999 to 9999) | <strong>L</strong> = Label<br>
+            <strong>R/N</strong> = Register or Number | <strong>M</strong> = Message register only<br><br>
+            File operations require holding a file with GRAB. Communication uses local/global modes.
+        </div>
+        
+        <div class="footer">
+            TRASH_WORLD_NEWS :: EXAPUNKS REFERENCE v2.1 :: [REDACTED] SYSTEMS
+        </div>
+    </div>
+</body>
+</html>
