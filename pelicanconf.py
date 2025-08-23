@@ -68,5 +68,8 @@ MARKDOWN = {
 STATIC_PATHS = [
     "extras",
     "images",
+    "static",
 ]
 EXTRA_PATH_METADATA = {"extras/CNAME": {"path": "CNAME"}}
+
+READERS = {"html": None}
