@@ -3,7 +3,7 @@ Date: 2025-08-17 19:07
 Category: General
 Tags: python, django
 Status: published
-Summary: My Django layout and setup in 2025
+Summary: My Django layout and setup in 2025.
 
 When starting a new Django project I've found myself tweaking the default project structure to make it more maintainable and organized. Here's my preferred layout and the small adjustments needed to make it work.
 
