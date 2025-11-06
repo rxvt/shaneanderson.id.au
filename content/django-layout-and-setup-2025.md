@@ -1,4 +1,4 @@
-Title: How I Structure Django Projects for Better Maintainability 2025
+Title: How I structure Django projects for better maintainability 2025
 Date: 2025-08-17 19:07
 Category: General
 Tags: python, django

@@ -1,4 +1,4 @@
-Title: EXAPUNKS Cheat sheet
+Title: EXAPUNKS cheat sheet
 Date: 2025-08-23 12:21
 Category: General
 Tags: gaming
