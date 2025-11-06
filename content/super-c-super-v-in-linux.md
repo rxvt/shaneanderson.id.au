@@ -1,4 +1,4 @@
-Title: Super-C & Super-V on Linux — copy & paste like macOS
+Title: Use Super-C & Super-V on Linux to copy & paste like macOS
 Date: 2025-11-07 09:59
 Category: General
 Tags: linux
