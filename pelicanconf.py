@@ -34,7 +34,7 @@ SOCIAL = (
     ("LINKEDIN", "https://www.linkedin.com/in/shaneanderson3/"),
 )
 
-DEFAULT_PAGINATION = True
+DEFAULT_PAGINATION = 10
 
 # Theme configuration
 THEME = "themes/plain-theme-2025"
