@@ -9,4 +9,4 @@ I've been struggling with my YouTube addiction for a fair while now. I try to on
 
 I've been using the [Unread](https://www.goldenhillsoftware.com/unread/) RSS reader for a while now on my MacBook and iPhone and it's a great piece of software, but I recently discovered you can also use it to subscribe to YouTube channels in addition to RSS feeds! After adding my YouTube subscriptions it's definitely become my favourite way to consume YouTube content, and by default I only see a short text description of the video and there's no algorithm trying to cram more videos down my throat - it's great!
 
-![Screenshot]({static}/images/unread_rss_youtube.jpeg)
+![Screenshot]({static}/images/using-unread-rss-reader-for-youtube/unread_rss_youtube.jpeg)
