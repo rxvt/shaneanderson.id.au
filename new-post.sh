@@ -48,8 +48,16 @@ echo "Created: $filepath"
 editor="${EDITOR:-vim}"
 echo "Opening in ${editor}..."
 
+checksum="$(md5sum "$filepath")"
+
 if [[ "$editor" == "vim" || "$editor" == "nvim" ]]; then
     "$editor" '+call cursor(6, 999)' '+startinsert!' "$filepath"
 else
     "$editor" "$filepath"
+fi
+
+# Remove the file if it was not modified
+if [[ "$(md5sum "$filepath")" == "$checksum" ]]; then
+    rm "$filepath"
+    echo "No changes saved, removed $filepath"
 fi
