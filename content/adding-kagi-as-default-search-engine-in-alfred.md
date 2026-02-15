@@ -6,10 +6,10 @@ Status: published
 Summary: How to add Kagi to Alfred on MacOS.
 
 1. Add Kagi as a custom search following the guide [here](https://help.kagi.com/kagi/getting-started/application-integrations.html).
-![Screenshot]({static}/images/kaji_alfred_1.jpeg "Adding Kagi as a custom search")
+ ![kaji_alfred_1]({static}/images/adding-kagi-as-default-search-engine-in-alfred/kaji_alfred_1.webp "Adding Kagi as a custom search")
 
 1. In the Default Results section click on the `Setup fallback results` button.
-![Screenshot]({static}/images/kaji_alfred_2.jpeg "Set up fallback results")
+![kaji_alfred_2]({static}/images/adding-kagi-as-default-search-engine-in-alfred/kaji_alfred_2.webp "Set up fallback results")
 
 1. Click on the `+` button, then `Custom Search` and select Kagi from the list. Drag it to the first position if you want Kagi to be your default.
-![Screenshot]({static}/images/kaji_alfred_3.jpeg "Adding Kagi as fallback search")
+![kaji_alfred_3]({static}/images/adding-kagi-as-default-search-engine-in-alfred/kaji_alfred_3.webp "Adding Kagi as fallback search")
