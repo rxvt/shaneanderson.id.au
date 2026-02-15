@@ -31,6 +31,9 @@ orig_name="$(basename "$image_file")"
 webp_name="${orig_name%.*}.webp"
 out_dir="content/images/$slug"
 
+read -p "Alt text [Screenshot]: " alt_text
+alt_text="${alt_text:-Screenshot}"
+
 mkdir -p "$out_dir"
 
 magick "$image_file" -resize '1400x>' -quality 82 "$out_dir/$webp_name"
@@ -41,4 +44,4 @@ orig_kb=$(( orig_size / 1024 ))
 new_kb=$(( new_size / 1024 ))
 
 echo "Created: $out_dir/$webp_name (${new_kb} KB, was ${orig_kb} KB)"
-echo "Markdown: ![${orig_name%.*}]({static}/images/$slug/$webp_name)"
+echo "Markdown: ![${alt_text}]({static}/images/$slug/$webp_name)"
