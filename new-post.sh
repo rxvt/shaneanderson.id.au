@@ -5,8 +5,8 @@ set -euo pipefail
 read -p "Title: " title
 
 if [[ -z "$title" ]]; then
-    echo "Error: title cannot be empty" >&2
-    exit 1
+  echo "Error: title cannot be empty" >&2
+  exit 1
 fi
 
 # Generate slug from title
@@ -26,21 +26,17 @@ tags="${tags:-misc}"
 filepath="content/${slug}.md"
 
 if [[ -f "$filepath" ]]; then
-    echo "Error: file already exists: $filepath" >&2
-    exit 1
+  echo "Error: file already exists: $filepath" >&2
+  exit 1
 fi
 
-cat > "$filepath" <<EOF
-Title: ${title}
-Date: ${date}
-Category: ${category}
-Tags: ${tags}
-Status: draft
-Summary:
-
-EOF
-
-sed -i 's/^Summary:$/Summary: /' "$filepath"
+printf 'Title: %s\n' "$title" > "$filepath"
+printf 'Date: %s\n' "$date" >> "$filepath"
+printf 'Category: %s\n' "$category" >> "$filepath"
+printf 'Tags: %s\n' "$tags" >> "$filepath"
+printf 'Status: draft\n' >> "$filepath"
+printf 'Summary: \n' >> "$filepath"
+printf '\n' >> "$filepath"
 
 echo "Created: $filepath"
 
@@ -51,13 +47,13 @@ echo "Opening in ${editor}..."
 checksum="$(md5sum "$filepath")"
 
 if [[ "$editor" == "vim" || "$editor" == "nvim" ]]; then
-    "$editor" '+call cursor(6, 999)' '+startinsert!' "$filepath"
+  "$editor" '+call cursor(6, 999)' '+startinsert!' "$filepath"
 else
-    "$editor" "$filepath"
+  "$editor" "$filepath"
 fi
 
 # Remove the file if it was not modified
 if [[ "$(md5sum "$filepath")" == "$checksum" ]]; then
-    rm "$filepath"
-    echo "No changes saved, removed $filepath"
+  rm "$filepath"
+  echo "No changes saved, removed $filepath"
 fi
