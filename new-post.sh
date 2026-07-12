@@ -35,7 +35,6 @@ printf 'Date: %s\n' "$date" >>"$filepath"
 printf 'Category: %s\n' "$category" >>"$filepath"
 printf 'Tags: %s\n' "$tags" >>"$filepath"
 printf 'Status: draft\n' >>"$filepath"
-printf 'Summary: \n' >>"$filepath"
 printf '\n' >>"$filepath"
 
 echo "Created: $filepath"
