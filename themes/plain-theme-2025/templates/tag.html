@@ -24,11 +24,6 @@
         {% endif %}
       </div>
     </header>
-    {% if article.summary %}
-    <div class="post-excerpt">
-      {{ article.summary|striptags }}
-    </div>
-    {% endif %}
   </article>
   {% endfor %}
 {% else %}
