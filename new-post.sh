@@ -40,11 +40,7 @@ printf '\n' >>"$filepath"
 echo "Created: $filepath"
 
 # Open in editor with cursor on the Summary line
-if command -v fresh; then
-  editor=fresh
-else
-  editor="${EDITOR:-vim}"
-fi
+editor="${EDITOR:-vim}"
 echo "Opening in ${editor}..."
 
 checksum="$(md5sum "$filepath")"
